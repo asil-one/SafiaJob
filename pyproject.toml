@@ -1,0 +1,20 @@
+[project]
+name = "sofia"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "folium>=0.20.0",
+    "h3>=4.5.0",
+    "joblib>=1.6.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.4.6",
+    "openpyxl>=3.1.5",
+    "osmium>=4.3.1",
+    "pandas>=3.0.6",
+    "pyarrow>=25.0.1",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.17.1",
+    "streamlit>=1.65.0",
+    "streamlit-folium>=0.27.4",
+]

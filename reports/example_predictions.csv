@@ -1,0 +1,5 @@
+id,lat,lon,sales_index,low_80,high_80,nearest_known_branch_km,confidence,drivers
+Chilonzor_test,41.2856,69.2034,20.5,11.3,44.0,1.12,normal,supermarkets/convenience within 500 m +1.8; bakeries/confectioners within 500 m +1.3; building density (1 km) +1.2; distance to nearest Safia -1.0; other Safia within 2 km -0.9
+Yunusobod_test,41.365,69.288,22.9,12.7,49.3,0.37,normal,supermarkets/convenience within 500 m +2.7; distance to nearest Safia -2.1; building density (1 km) +1.5; distance to bus stop +1.4; shops within 300 m +1.0
+Samarkand_center,39.6542,66.9597,20.8,11.5,44.7,136.52,low (area not covered by training data),distance to nearest Safia +3.4; other Safia within 1 km +2.3; shops within 300 m +0.6; distance to bus stop -0.6; in Tashkent +0.5
+Sergeli_test,41.226,69.219,15.2,8.4,32.8,0.38,normal,population within 2 km -0.8; distance to nearest Safia -0.7; shops within 300 m +0.5; distance to bus stop +0.4

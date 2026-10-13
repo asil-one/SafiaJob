@@ -1,0 +1,8 @@
+.env
+.env.*
+.venv/
+__pycache__/
+*.pyc
+.idea/
+.DS_Store
+data/external/uzbekistan.osm.pbf
