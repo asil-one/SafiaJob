@@ -7,12 +7,13 @@ Download: https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf -> data/e
 import re
 from pathlib import Path
 
+import numpy as np
 import osmium
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 PBF = ROOT / "data/external/uzbekistan.osm.pbf"
-CACHE = ROOT / "data/external/osm_pois.parquet"
+CACHE = ROOT / "data/external/osm_pois"  # folder of parquet parts (small files push reliably)
 
 FOOD_SHOPS = {"bakery", "confectionery", "pastry", "chocolate"}
 GROCERY = {"supermarket", "convenience"}
@@ -89,7 +90,11 @@ def load_pois(refresh=False) -> pd.DataFrame:
     h.apply_file(str(PBF), locations=True, idx="flex_mem")
     cols = ["cat", "osm_id", "lat", "lon", "name", "brand"]
     pois = pd.DataFrame(h.rows + h.road_pts, columns=cols)
-    pois.to_parquet(CACHE)
+    food = pois.cat.isin(["cafe", "bakery", "fast_food", "restaurant"])
+    pois.loc[~food, ["name", "brand"]] = None  # names are only used for food places
+    CACHE.mkdir(parents=True, exist_ok=True)
+    for i, idx in enumerate(np.array_split(np.arange(len(pois)), 6)):
+        pois.iloc[idx].to_parquet(CACHE / f"part-{i}.parquet", compression="zstd", compression_level=19, index=False)
     return pois
 
 

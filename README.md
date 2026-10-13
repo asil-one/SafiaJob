@@ -38,7 +38,7 @@ Main drivers vs a typical branch:
 ```bash
 uv run python src/load.py          # xlsx -> data/processed/branches.csv
 # OSM extract: https://download.geofabrik.de/asia/uzbekistan-latest.osm.pbf -> data/external/
-uv run python src/osm.py           # -> data/external/osm_pois.parquet
+uv run python src/osm.py           # -> data/external/osm_pois/ (6 parquet parts)
 # population: Kontur H3 grid (HDX "kontur-population-uzbekistan") -> data/external/population_h3.parquet
 uv run python src/dgis.py          # 2GIS Safia network + business counts (needs DGIS_API_KEY in .env)
 uv run python src/features.py      # -> data/processed/features.parquet

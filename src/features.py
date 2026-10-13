@@ -47,7 +47,7 @@ def _dedupe(pts, radius):
 
 class Featurizer:
     def __init__(self, branches: pd.DataFrame | None = None):
-        pois = pd.read_parquet(ROOT / "data/external/osm_pois.parquet")
+        pois = pd.read_parquet(ROOT / "data/external/osm_pois")
         pop = pd.read_parquet(ROOT / "data/external/population_h3.parquet")
         self.trees = {c: BallTree(_rad(g.lat, g.lon), metric="haversine") for c, g in pois.groupby("cat")}
 
