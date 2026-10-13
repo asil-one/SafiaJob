@@ -93,8 +93,8 @@ def load_pois(refresh=False) -> pd.DataFrame:
     food = pois.cat.isin(["cafe", "bakery", "fast_food", "restaurant"])
     pois.loc[~food, ["name", "brand"]] = None  # names are only used for food places
     CACHE.mkdir(parents=True, exist_ok=True)
-    for i, idx in enumerate(np.array_split(np.arange(len(pois)), 6)):
-        pois.iloc[idx].to_parquet(CACHE / f"part-{i}.parquet", compression="zstd", compression_level=19, index=False)
+    for i, idx in enumerate(np.array_split(np.arange(len(pois)), 30)):
+        pois.iloc[idx].to_parquet(CACHE / f"part-{i:02d}.parquet", compression="zstd", compression_level=19, index=False)
     return pois
 
 
